@@ -111,12 +111,7 @@ We **do not commit datasets**. The `data/` folder is git-ignored.
 > Note: GitHub **blocks files larger than 100 MiB** in normal repos.
 > Keep datasets local. If we ever needed versioned large files, use Git LFS.
 
-```
 
----
-
-
----
 
 ## Quick FAQ for the team
 - **“I don’t see the data on GitHub after I push.”**  
@@ -137,8 +132,9 @@ We **do not commit datasets**. The `data/` folder is git-ignored.
 
 If you want, I can also drop these steps into a PR that adds the README section and a `data/.gitkeep` placeholder.
 ::contentReference[oaicite:11]{index=11}
-```
 
+---
+### Reference
 [1]: https://docs.github.com/enterprise-cloud%40latest/repositories/working-with-files/managing-large-files/about-large-files-on-github?utm_source=chatgpt.com "About large files on GitHub - GitHub Enterprise Cloud Docs"
 [2]: https://www.atlassian.com/git/tutorials/saving-changes/gitignore?utm_source=chatgpt.com ".gitignore file - ignoring files in Git | Atlassian Git Tutorial"
 [3]: https://github.com/Kaggle/kaggle-api/blob/main/docs/README.md?utm_source=chatgpt.com "kaggle-api/docs/README.md at main · Kaggle/kaggle-api · GitHub"

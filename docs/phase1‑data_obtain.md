@@ -1,6 +1,4 @@
-Absolutely. Here’s a super clear, **English, teammate-friendly** handout for the “**no data in GitHub**” workflow—what to do and why. You can paste this straight into your README or send it in chat.
 
----
 
 # Why this workflow?
 

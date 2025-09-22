@@ -85,9 +85,8 @@ git push
 
 ---
 
-# Drop-in README section (ready to paste)
+# Drop-in README section 
 
-````markdown
 ## Data (local only — not committed)
 
 We **do not commit datasets**. The `data/` folder is git-ignored.
@@ -98,7 +97,6 @@ We **do not commit datasets**. The `data/` folder is git-ignored.
    pip install kaggle
    # Get token: Kaggle Profile → Account → "Create API Token"
    # Windows token path: C:\Users\<YOU>\.kaggle\kaggle.json
-````
 
 2. Download:
 

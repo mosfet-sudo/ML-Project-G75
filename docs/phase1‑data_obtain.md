@@ -7,7 +7,7 @@
 
 ---
 
-# Step-by-step (copy/paste friendly)
+# Step-by-step 
 
 ## 1) Create a local data folder and ignore it
 
@@ -112,6 +112,9 @@ We **do not commit datasets**. The `data/` folder is git-ignored.
 > Keep datasets local. If we ever needed versioned large files, use Git LFS.
 
 ```
+
+---
+
 
 ---
 

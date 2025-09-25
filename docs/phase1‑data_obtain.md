@@ -1,7 +1,7 @@
 
 
 # Why this workflow?
-
+（Notice: this are the workflow I refer from previous projects, but not sure completely works on everyone's machines.)
 * **Keep the repo small & safe:** GitHub **blocks files >100 MiB**. Large datasets should not be committed; use links or a download step instead. ([GitHub Docs][1])
 * **Stay clean with `.gitignore`:** Tell Git to **ignore** your local `data/` folder so CSV/PDF files never get pushed. If you ever accidentally committed a file already, remove it from tracking with `git rm --cached` and keep it locally. ([Atlassian][2])
 

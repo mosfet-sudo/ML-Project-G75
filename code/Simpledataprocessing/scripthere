@@ -1,1 +1,39 @@
+import pandas as pd
+import numpy as np
+import json
+df = pd.read_csv("C:/Users/ej/PycharmProjects/Assignment2/.venv/Scripts/ai_2020.csv")
+#Duplicate checking
 
+df = df.drop(columns = ["UDI"])
+num_columns = df.shape[1]
+num_rows = df.shape[0]
+duplicateddf=df.duplicated()
+no_duplicate_df = df.loc[duplicateddf==False]
+
+print(no_duplicate_df.columns)
+#Normalization
+
+temp_indexes = [no_duplicate_df.columns.get_loc("Air temperature [K]")]
+temp_indexes.append(no_duplicate_df.columns.get_loc("Process temperature [K]"))
+temp_indexes.append(no_duplicate_df.columns.get_loc("Rotational speed [rpm]")) #TURN INTO SECONDS?
+temp_indexes.append(no_duplicate_df.columns.get_loc("Torque [Nm]"))
+temp_indexes.append(no_duplicate_df.columns.get_loc("Tool wear [min]"))     # TURN INTO SECONDS?
+# BOTH RPM AND TOOLWEAR HAVE ISSUES WITH CERTAIN DTYPES BEING INT DUE TO WHOLE NUMBERS IN DATA
+no_duplicate_df["Rotational speed [rpm]"] = no_duplicate_df["Rotational speed [rpm]"].astype(float)
+no_duplicate_df["Tool wear [min]"] = no_duplicate_df["Tool wear [min]"].astype(float)
+
+for i in temp_indexes:
+
+    temp_series = no_duplicate_df.iloc[:,i]
+    series_max = temp_series.max()
+    series_min = temp_series.min()
+    series_range = temp_series.max() - temp_series.min()
+
+    for j in range(temp_series.shape[0]):
+
+        no_duplicate_df.iat[j,i] = (no_duplicate_df.iat[j,i]-series_min)/series_range
+
+
+no_dupe_normalized_df = no_duplicate_df
+
+no_dupe_normalized_df.to_csv("PredicitiveMaintenanceDatasetPROCESSED.csv")

@@ -1,1 +1,89 @@
 
+import pandas as pd
+import numpy as np
+
+#Method for parsing text files into dataframe, takes a string input and returns a dataframe object
+def parseTxt2Dataframe(String):
+    with open(String, 'r', encoding='utf-8') as file:
+        lines = []
+        for line in file:
+            newline = line.strip()
+            newline = newline.split()
+            lines.append(newline)
+        new_df = pd.DataFrame(lines, columns=['Unit Number', 'Time in cycles',
+                                  'Operational Setting 1', 'Operational Setting 2','Operational Setting 3',
+                                  'T2','T24','T30','T50','P2','P15','P30','Nf','Nc','epr','Ps30','phi','NRf','NRc',
+                                  'BPR','farB','htBleed','Nf_dmd','PCNfr_dmd','W31','W32'])
+        num_cols = new_df.shape[1]
+        for i in range(num_cols):
+            new_df.iloc[:,i] = pd.to_numeric(new_df.iloc[:,i])
+
+
+    return new_df
+
+#normalizes the data, and checks for duplicates, takes dataframe object as input and returns a dataframe
+def normalize_and_checkdupe(df):
+    checkdf = df.drop(columns=['Unit Number','Time in cycles'])
+    duplicateddf = checkdf.duplicated()
+    no_dupe_df = df.loc[duplicateddf==False]
+    num_cols = no_dupe_df.shape[1]
+    num_rows = no_dupe_df.shape[0]
+    for i in range(2,num_cols):
+        max_val = no_dupe_df.iloc[:,i].max()
+        min_val = no_dupe_df.iloc[:,i].min()
+        val_range = max_val - min_val
+        for j in range(num_rows):
+            if val_range != 0:
+                no_dupe_df.iat[j, i] = (no_dupe_df.iat[j, i] - min_val) / val_range
+            else:
+                no_dupe_df.iat[j, i] = -1
+
+    return no_dupe_df
+
+
+# parsing each text file into a dataframe
+df_test1 = parseTxt2Dataframe('C:/Users/ej/PycharmProjects/Assignment2/.venv/Scripts/CMaps/test_FD001.txt')
+df_test2 = parseTxt2Dataframe('C:/Users/ej/PycharmProjects/Assignment2/.venv/Scripts/CMaps/test_FD002.txt')
+df_test3 = parseTxt2Dataframe('C:/Users/ej/PycharmProjects/Assignment2/.venv/Scripts/CMaps/test_FD003.txt')
+df_test4 = parseTxt2Dataframe('C:/Users/ej/PycharmProjects/Assignment2/.venv/Scripts/CMaps/test_FD004.txt')
+df_train1 = parseTxt2Dataframe('C:/Users/ej/PycharmProjects/Assignment2/.venv/Scripts/CMaps/train_FD001.txt')
+df_train2 = parseTxt2Dataframe('C:/Users/ej/PycharmProjects/Assignment2/.venv/Scripts/CMaps/train_FD002.txt')
+df_train3 = parseTxt2Dataframe('C:/Users/ej/PycharmProjects/Assignment2/.venv/Scripts/CMaps/train_FD003.txt')
+df_train4 = parseTxt2Dataframe('C:/Users/ej/PycharmProjects/Assignment2/.venv/Scripts/CMaps/train_FD004.txt')
+
+
+
+#combining the data into one dataset
+
+df_all = pd.concat([df_test1,df_test2,df_test3,df_test4,df_train1,df_train2,df_train3,df_train4],ignore_index=True)
+print(df_all.shape)
+print(df_test1.shape)
+
+## normalizing and checking for duplicates when combined
+df_all_processed = normalize_and_checkdupe(df_all)
+
+## normalizing and checking for duplicates when uncombined
+df_test1_processed = normalize_and_checkdupe(df_test1)
+#df_test2_processed = normalize_and_checkdupe(df_test2)
+#df_test3_processed = normalize_and_checkdupe(df_test3)
+#df_test4_processed = normalize_and_checkdupe(df_test4)
+#df_train1_processed = normalize_and_checkdupe(df_train1)
+#df_train2_processed = normalize_and_checkdupe(df_train2)
+#df_train3_processed = normalize_and_checkdupe(df_train3)
+#df_train4_processed = normalize_and_checkdupe(df_train4)
+
+
+
+## testing and debug
+pd.set_option('display.max_columns', None)
+print(df_all_processed.shape)
+print(df_all_processed.head())
+print(df_test1_processed.head())
+print("newline")
+
+
+print("newline")
+print(df_all_processed.shape)
+
+pd.reset_option('display.max_columns')
+df_all_processed.to_csv('NASAprocessed.csv')

@@ -1,5 +1,5 @@
 # COMP90049 Assignment 2: Early Prediction of Mechanical Failures  
-*Group 75 | Elijah Cullinan, Amelia King, Xinyu Xu (Jasmine)*  
+*Group 75 | Elijah Cullinan, Amelia King, Xinyu Xu *  
 
 
 ## Project Overview  
@@ -22,29 +22,15 @@ All datasets are publicly available and preprocessed via custom pipelines (see `
 | NASA C-MAPSS Turbofan | RQ2 (Internal/Manufacturing Quality) | https://www.kaggle.com/datasets/behrad3d/nasa-cmaps                        |  
 
 
-## Code Structure  
-The repository follows a modular structure to ensure reproducibility and clarity. Core files/directories:  
+## Core Structure  
+The project is organized into these key parts:  
 
-```
-ML-Project-G75/
-├── src/                      # Core code (split by functionality)
-│   ├── data_prep/            # Data downloading & initial preprocessing
-│   │   ├── metro_data_loader.py  # MetroPT3: 10s→1min downsampling, normalization
-│   │   └── nasa_data_loader.py  # NASA: TXT→CSV conversion, duplicate removal
-│   ├── feature_eng/          # Feature engineering pipelines
-│   │   ├── metro_features.py     # MetroPT3: Cumulative anomalies, power-temp ratio
-│   │   └── nasa_xinyu_knn_nb.py # NASA: Baseline deviation, slope, thermodynamic ratios (Jasmine)
-│   └── model_train/          # Model training & evaluation
-│       ├── metro_ensemble.py     # MetroPT3: SVM/kNN/DT ensemble (F1=0.552)
-│       └── nasa_model_eval.py    # NASA: XGBoost/MLP training (supplementary to kNN/NB)
-├── features_nasa/            # Output: Engineered features (CSV)
-│   ├── X_train_FD001.csv     # NASA FD001 training features (Jasmine)
-│   └── pred_FD004.csv        # KNN predictions for NASA FD004 (Jasmine)
-├── results/                  # Output: Model metrics & visualizations
-│   ├── evaluation_summary_nb.csv # NB performance across NASA subsets (Jasmine)
-│   └── ENSEMBLE_BEST_FAILURE_HEATMAP.png # MetroPT3 ensemble confusion matrix
-└── README.md                 # Project documentation (this file)
-```  
+| Directory/File                | What It Does                                                                 |  
+|-------------------------------|------------------------------------------------------------------------------|  
+| `code/`                       | All Python scripts + Jupyter Notebooks for data processing, modeling, etc.   |  
+| `data/`                       | Raw datasets (e.g., NASA turbofan data) + processed data files.              |  
+| `docs/`                       | Assignment instructions, literature review notes, and quick references.      |  
+| `results/`                    | Model outputs (predictions, metrics) + visualization files.                  |  
 
 
 ## Environment Setup  
@@ -91,7 +77,7 @@ Follow these steps to reproduce the project’s key results (focus on NASA/KNN/N
   Run `src/model_train/metro_ensemble.py` to train the SVM/kNN/DT ensemble (F1=0.552 for failure prediction).  
 
 ### 4. Visualize Results  
-- NASA: The `nasa_xinyu_knn_nb.py` script auto-generates "True vs. Predicted RUL" plots for each FD subset (e.g., FD004 KNN underperformance).  
+- NASA's KNN & NB: The `nasa_xinyu_knn_nb.py` script auto-generates "True vs. Predicted RUL" plots for each FD subset (e.g., FD004 KNN underperformance).  
 - MetroPT3: `metro_ensemble.py` outputs confusion matrices and accuracy-vs-instance plots (saved to `results/`).  
 
 
@@ -105,8 +91,8 @@ Follow these steps to reproduce the project’s key results (focus on NASA/KNN/N
 
 ## Contributors  
 - **Elijah Cullinan**: MetroPT3 preprocessing, ensemble model training, and Discussion section.  
-- **Amelia King**: Literature review, Introduction, and MetroPT3 feature design notes.  
-- **Xinyu Xu (Jasmine)**: NASA C-MAPSS feature engineering (baseline deviation, thermodynamic ratios), KNN/NB model training/evaluation, and Results section (NASA part).  
+- **Amelia King**: Literature review, Introduction, MetroPT3 feature design notes，NASA C-MAPSS's RamdonForest, MLP, and idea integration.  
+- **Xinyu Xu**: NASA C-MAPSS feature engineering (baseline deviation, thermodynamic ratios), KNN/NB model training/evaluation, and Results section.  
 
 
 ## License  

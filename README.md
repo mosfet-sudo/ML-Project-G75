@@ -1,4 +1,4 @@
-# COMP90049 Assignment 2: Early Prediction of Mechanical Failures  
+# Machine Learning Project: Early Prediction of Mechanical Failures  
 *Group 75 | Elijah Cullinan, Amelia King, Xinyu Xu*   
 
 

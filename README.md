@@ -117,6 +117,6 @@ Aligned with report Section 6 (Methodology Rigor):
 
 
 ## License  
-This project is for educational purposes (COMP90049, University of Melbourne). Datasets follow original licensing:  
+Datasets follow original licensing:  
 - MetroPT3: UCI Machine Learning Repository Open License.  
 - NASA C-MAPSS: Kaggle Public Dataset License.

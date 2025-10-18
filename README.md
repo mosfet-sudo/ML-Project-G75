@@ -112,7 +112,7 @@ Aligned with report Section 6 (Methodology Rigor):
 
 ## Contributors  
 - **Elijah Cullinan**: MetroPT3 preprocessing, cumulative feature design, SVM/kNN/DT ensemble training, Discussion section (environmental factor analysis), and idea integration (RQ alignment promotion).  
-- **Amelia King**: Literature review (7 references, Section 2), Introduction, NASA Random Forest/MLP implementation, and idea integration (RQ alignment promotion).  
+- **Amelia King**: Literature review, Introduction, NASA Random Forest/MLP implementation, and idea integration (RQ alignment promotion).  
 - **Xinyu Xu**: Datasets collection, Research question pre-define, NASA C-MAPSS feature engineering (thermodynamic ratios, baseline deviation), KNN/NB model tuning/evaluation, Results section drafting, and visualization (Figure 3/5).  
 
 

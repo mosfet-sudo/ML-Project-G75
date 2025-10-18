@@ -14,7 +14,7 @@ Key contributions aligned with the final report:
 
 
 ## Datasets  
-All datasets are publicly available, with preprocessing pipelines documented in the main notebook (see *Core Structure*). Key details from the final report are补充如下：  
+All datasets are publicly available, with preprocessing pipelines documented in the main notebook (see *Core Structure*). Key details from the final report are：  
 
 | Dataset               | Purpose                          | Key Preprocessing Steps                                                                 | Source Link                                                                 |
 |-----------------------|----------------------------------|-----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|

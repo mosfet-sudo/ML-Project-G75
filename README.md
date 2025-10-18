@@ -52,7 +52,7 @@ pip install kagglehub==0.2.5 requests==2.31.0
 
 
 ## Step-by-Step Execution  
-Follow these steps to reproduce **all report results** (prioritizes Xinyu’s NASA workflow first):  
+Follow these steps to reproduce **all report results** :  
 
 ### 1. Prepare Raw Data  
 - **NASA C-MAPSS**: Open `code/nasa_xinyu_knn_nb.ipynb` and run **Cell 0** (auto-downloads FD001–FD004 TXT files to `data/`; uses Kaggle fallback if GitHub is unavailable).  
